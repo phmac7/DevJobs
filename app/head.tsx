@@ -1,7 +1,7 @@
 export default function Head() {
-    return (
-      <>
-        <title>Dev Jobs</title>
-      </>
-    )
+  return (
+    <>
+      <title>Dev Jobs</title>
+    </>
+  );
 }
