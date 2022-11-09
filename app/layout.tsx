@@ -1,6 +1,8 @@
 'use client';
 import '@/styles/globals.css';
+import { Kumbh_Sans } from '@next/font/google';
 import { ThemeProvider } from 'next-themes';
+const kumbh = Kumbh_Sans({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -8,7 +10,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={kumbh.className}>
       <ThemeProvider attribute="class">
         <body
           className="bg-gray-50

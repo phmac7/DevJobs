@@ -1,6 +1,5 @@
-'use client';
-
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
+import Button from '@/components/Button';
 
 export default function Page() {
   return (
@@ -9,6 +8,7 @@ export default function Page() {
         <h1 className="text-xl">Hello world</h1>
         <ThemeToggle />
       </header>
+      <Button label="Button 1" secondary />
     </div>
   );
 }
