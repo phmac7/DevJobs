@@ -1,5 +1,6 @@
 import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import Button from '@/components/Button';
+import Checkbox from '@/components/Checkbox';
 
 export default function Page() {
   return (
@@ -9,6 +10,7 @@ export default function Page() {
         <ThemeToggle />
       </header>
       <Button label="Button 1" secondary />
+      <Checkbox />
     </div>
   );
 }
