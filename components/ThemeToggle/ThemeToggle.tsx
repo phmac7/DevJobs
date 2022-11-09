@@ -1,4 +1,5 @@
 // ./components/ThemeToggle.js
+'use client';
 
 import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
@@ -25,11 +26,25 @@ export default function ThemeToggle() {
   return (
     // E a logica em si
     <button
-      className="focus:outline-none"
+      className="focus:outline-none group"
       onClick={() => setTheme(isDark() ? 'light' : 'dark')}
       aria-label="Theme toggle"
     >
-      {isDark() ? <BiSun size={20} /> : <BiMoon size={20} />}
+      <span className=" flex justify-between gap-2 items-center">
+        <span>
+          <BiSun size={20} />
+        </span>
+        <span className=" w-12 h-6 bg-light-gray rounded-xl flex items-center relative transition-all">
+          <span
+            className={`block w-4 h-4 bg-primary rounded-full group-hover:bg-primary-light my-1 ${
+              isDark() ? 'translate-x-7' : 'translate-x-1'
+            }`}
+          ></span>
+        </span>
+        <span>
+          <BiMoon size={20} />
+        </span>
+      </span>
     </button>
   );
 }
