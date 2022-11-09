@@ -1,6 +1,4 @@
-import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
-import Button from '@/components/Button';
-import Checkbox from '@/components/Checkbox';
+import { Button, Checkbox, ThemeToggle } from '@/components/atoms';
 
 export default function Page() {
   return (
