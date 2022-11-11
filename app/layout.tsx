@@ -1,4 +1,5 @@
 'use client';
+import Header from '@/components/organisms/Header';
 import '@/styles/globals.css';
 import { Kumbh_Sans } from '@next/font/google';
 import { ThemeProvider } from 'next-themes';
@@ -19,7 +20,8 @@ export default function RootLayout({
         dark:text-gray-50
         transition-colors"
         >
-          {children}
+          <Header />
+          <main className="mx-4">{children}</main>
         </body>
       </ThemeProvider>
     </html>

@@ -13,7 +13,7 @@ const SearchInput = () => {
   };
 
   return (
-    <form className="relative" onSubmit={onSubmitHandler}>
+    <form className="relative -translate-y-1/2" onSubmit={onSubmitHandler}>
       <input
         className="w-full rounded h-20 pl-6 pr-32 text-very-dark-blue dark:text-white placeholder:text-gray"
         placeholder="Enter desired job..."

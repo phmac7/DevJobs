@@ -17,7 +17,6 @@ const Header = () => {
           />
           <ThemeToggle />
         </div>
-        <SearchInput />
       </div>
     </header>
   );
