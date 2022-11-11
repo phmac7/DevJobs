@@ -4,4 +4,6 @@ export interface ButtonProps {
   secondary?: boolean;
   label: string | ReactElement;
   padding?: string;
+  onClick?: () => void;
+  id?: string;
 }

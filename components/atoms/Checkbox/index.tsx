@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Checkbox = () => {
+interface CheckBoxProps {
+  label: string;
+}
+
+const Checkbox: React.FC<CheckBoxProps> = ({ label }) => {
   return (
     <div className="flex items-center mb-4">
       <input
@@ -13,7 +17,7 @@ const Checkbox = () => {
         htmlFor="default-checkbox"
         className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300 select-none"
       >
-        Default checkbox
+        {label}
       </label>
     </div>
   );
