@@ -13,8 +13,8 @@ export default function RootLayout({
     <html lang="en" className={kumbh.className}>
       <ThemeProvider attribute="class">
         <body
-          className="bg-gray-50
-        dark:bg-gray-900
+          className="bg-light-gray
+        dark:bg-very-dark-blue
         text-gray-900
         dark:text-gray-50
         transition-colors"

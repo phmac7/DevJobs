@@ -1,9 +1,17 @@
 import React from 'react';
 import { ButtonProps } from '@/models/types';
-const Button: React.FC<ButtonProps> = ({ label, secondary = false }) => {
+
+const Button: React.FC<ButtonProps> = ({
+  label,
+  secondary = false,
+  padding,
+}) => {
   if (!secondary) {
     return (
-      <button className="px-9 py-4 bg-primary text-white rounded font-bold hover:bg-primary-light text-lg">
+      <button
+        style={{ padding: padding }}
+        className="px-9 py-4 bg-primary text-white rounded font-bold hover:bg-primary-light text-lg"
+      >
         {label}
       </button>
     );
