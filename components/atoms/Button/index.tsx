@@ -35,7 +35,8 @@ const Button: React.FC<ButtonProps> = ({
     <button
       id={id}
       onClick={onClickHandler}
-      className="px-9 py-4 text-primary bg-gray font-bold text-lg rounded hover:bg-primary-light dark:text-white dark:bg-dark-blue dark:hover:bg-dark-gray"
+      style={{ padding: padding }}
+      className="px-9 py-4 text-primary bg-light-gray font-bold text-lg rounded hover:bg-primary-light dark:text-white dark:bg-dark-blue dark:hover:bg-dark-gray"
     >
       {label}
     </button>
