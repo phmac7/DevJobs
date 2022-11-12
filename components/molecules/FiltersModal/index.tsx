@@ -48,7 +48,7 @@ const FiltersModal: React.FC<FiltersModalProps> = ({ isOpen, setIsOpen }) => {
       <div
         id={modalID}
         role="dialog"
-        className="w-3/4 h-56 bg-white dark:bg-very-dark-blue absolute top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 px-6 pt-4 pb-6 flex flex-col justify-between"
+        className="w-3/4 h-56 bg-white dark:bg-very-dark-blue fixed top-2/4 left-2/4 -translate-x-1/2 -translate-y-1/2 px-6 pt-4 pb-6 flex flex-col justify-between"
       >
         <div
           id={closeModalIconID}
