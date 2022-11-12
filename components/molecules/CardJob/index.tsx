@@ -18,7 +18,7 @@ const CardJob: React.FC<CardJobProps> = ({
   const logoUrl = filterCompany[0].attributes.logo.data.attributes.url;
 
   return (
-    <div className="w-full h-60 bg-white dark:bg-very-dark-blue rounded">
+    <div className="w-96 max-w-sm h-60 bg-white dark:bg-very-dark-blue rounded">
       <div className="px-8 pt-2 pb-8">
         <div
           style={{ backgroundColor: backgroundColor }}
