@@ -17,7 +17,7 @@ export default function RootLayout({
           className="bg-light-gray
         dark:bg-midnight
         text-gray-900
-        dark:text-gray-50
+        dark:text-gray
         transition-colors"
         >
           <Header />
