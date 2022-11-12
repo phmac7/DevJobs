@@ -33,12 +33,12 @@ const CardJob: React.FC<CardJobProps> = ({
           />
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-dark-gray flex gap-2 items-center">
+          <div className="text-dark-gray flex gap-2 items-center">
             <span>5h ago</span>
             <div className="w-1 h-1 bg-dark-gray rounded-full"></div>
             <span>{contract}</span>
-          </span>
-          <p className="first-letter:uppercase font-bold text-2xl">
+          </div>
+          <p className="first-letter:uppercase font-bold text-2xl dark:text-white">
             {position}
           </p>
           <span className="text-dark-gray block mb-6">{companyName}</span>
