@@ -1,3 +1,6 @@
 export {default as SearchInput} from './SearchInput'
 export {default as FiltersModal} from './FiltersModal'
 export {default as CardJob} from './CardJob'
+export {default as CompanyHeader} from './CompanyHeader'
+export {default as JobDetails} from './JobDetails'
+export {default as JobHeader} from './JobHeader'
