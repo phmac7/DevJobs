@@ -1,30 +1,50 @@
-import { SearchInput } from '@/components/molecules';
-import { Jobs } from '@/models/types';
+import { JobList } from '@/components/organisms';
+import { Companies, Jobs } from '@/models/types';
+import { Suspense } from 'react';
 
 const getJobs = async () => {
-  const res = await (
-    await fetch('http://localhost:1337/api/jobs?populate=*', {
-      headers: {
-        Authorization: 'Bearer ' + process.env.STRAPI_KEY,
-        'Content-Type': 'application/json',
-      },
-    })
-  ).json();
-  const data: Jobs[] = res.data;
-  return data;
+  try {
+    const res = await (
+      await fetch('http://localhost:1337/api/jobs?populate=*', {
+        headers: {
+          Authorization: 'Bearer ' + process.env.STRAPI_KEY,
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-cache',
+      })
+    ).json();
+    const data: Jobs[] = await res.data;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const getCompanies = async () => {
+  try {
+    const res = await (
+      await fetch('http://localhost:1337/api/companies?populate=logo', {
+        headers: {
+          Authorization: 'Bearer ' + process.env.STRAPI_KEY,
+          'Content-Type': 'application/json',
+        },
+        cache: 'no-cache',
+      })
+    ).json();
+    const data: Companies[] = await res.data;
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default async function Page() {
   const jobs = await getJobs();
-  console.log(jobs);
-  return (
-    <div>
-      <SearchInput />
-      <div>
-        {jobs.map((job) => (
-          <p key={job.id}>{job.attributes.position}</p>
-        ))}
-      </div>
-    </div>
-  );
+  const companies = await getCompanies();
+
+  if (!jobs || !companies) {
+    return <p>Loading...</p>;
+  }
+
+  return <JobList jobs={jobs} companies={companies} />;
 }

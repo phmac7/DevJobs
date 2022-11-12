@@ -1,12 +1,11 @@
 import { ThemeToggle } from '@/components/atoms';
-import { SearchInput } from '@/components/molecules';
 import Image from 'next/image';
 import React from 'react';
 import styles from './Header.module.css';
 
 const Header = () => {
   return (
-    <header className={`${styles.header} w-full h-36`}>
+    <nav className={`${styles.header} w-full h-36`}>
       <div className="flex pt-8 px-6 gap-8 flex-col">
         <div className="flex justify-between items-center">
           <Image
@@ -18,7 +17,7 @@ const Header = () => {
           <ThemeToggle />
         </div>
       </div>
-    </header>
+    </nav>
   );
 };
 
