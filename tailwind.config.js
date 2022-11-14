@@ -18,7 +18,16 @@ module.exports = {
             'dark-blue': '#303642',
             'midnight': '#121721',
         },
-      extend: {},
+        screens: {
+            'tablet': '768px',
+            'tablet-xl': '1064px',
+            'desktop': '1440px'
+        },
+      extend: {
+        width: {
+            '85': '21.25rem'
+        }
+      },
     },
     plugins: [],
   }

@@ -13,7 +13,7 @@ const JobList: React.FC<jobListProps> = ({ jobs, companies }) => {
   return (
     <div>
       <SearchInput />
-      <div className="grid grid-cols-1 gap-x-3 gap-y-12 justify-items-center">
+      <div className="grid grid-cols-1 gap-x-3 gap-y-12 justify-items-center tablet:grid-cols-2 tablet-xl:grid-cols-3">
         {jobs?.map((job) => (
           <Link key={job.id} href={`/${job.id}`}>
             <CardJob

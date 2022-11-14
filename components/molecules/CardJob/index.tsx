@@ -18,7 +18,7 @@ const CardJob: React.FC<CardJobProps> = ({
   const logoUrl = filterCompany[0].attributes.logo.data.attributes.url;
 
   return (
-    <div className="w-96 max-w-sm h-60 bg-white dark:bg-very-dark-blue rounded">
+    <div className="w-85 max-w-sm h-60 bg-white dark:bg-very-dark-blue rounded">
       <div className="px-8 pt-2 pb-8">
         <div
           style={{ backgroundColor: backgroundColor }}
@@ -38,7 +38,7 @@ const CardJob: React.FC<CardJobProps> = ({
             <div className="w-1 h-1 bg-dark-gray rounded-full"></div>
             <span>{contract}</span>
           </div>
-          <p className="first-letter:uppercase font-bold text-2xl dark:text-white">
+          <p className="first-letter:uppercase font-bold text-xl dark:text-white">
             {position}
           </p>
           <span className="text-dark-gray block mb-6">{companyName}</span>
