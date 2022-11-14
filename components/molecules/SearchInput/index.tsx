@@ -7,6 +7,7 @@ import { FaFilter } from 'react-icons/fa';
 import FiltersModal from '../FiltersModal';
 import useWindowSize, { Size } from '@/hooks/useWindowSize';
 import { Jobs } from '@/models/types';
+import useFilterJobs from '@/hooks/useFilterJobs';
 
 interface SearchInputProps {
   jobs: Jobs[];
@@ -26,36 +27,13 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
 
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(position, location);
-    let filteredJobs = jobs;
-    if (location !== '' && position !== '') {
-      filteredJobs = jobs.filter(
-        (job) =>
-          job.attributes.position
-            .toLowerCase()
-            .includes(position.toLowerCase()) &&
-          job.attributes.location.toLowerCase().includes(location.toLowerCase())
-      );
-      setFilteredJobs(filteredJobs);
-      return;
-    }
-    if (position !== '') {
-      filteredJobs = jobs.filter((job) =>
-        job.attributes.position.toLowerCase().includes(position.toLowerCase())
-      );
-      setFilteredJobs(filteredJobs);
-      return;
-    }
-    if (location !== '') {
-      filteredJobs = jobs.filter((job) =>
-        job.attributes.location.toLowerCase().includes(location.toLowerCase())
-      );
-      setFilteredJobs(filteredJobs);
-      return;
-    }
-
-    if (position === '' && location === '') {
-      filteredJobs = jobs;
+    const filteredJobs = useFilterJobs({
+      isFullTime: fullTime,
+      jobs: jobs,
+      location: location,
+      position: position,
+    });
+    if (filteredJobs) {
       setFilteredJobs(filteredJobs);
     }
   };
@@ -82,7 +60,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
           <LocationFilter setLocation={setLocation} location={location} />
         </div>
         <div className="hidden tablet:block flex-1 h-full">
-          <Checkbox label={'Full time'} />
+          <Checkbox
+            label={'Full time'}
+            fullTime={fullTime}
+            setFullTime={setFullTime}
+          />
         </div>
         <button
           type="button"
