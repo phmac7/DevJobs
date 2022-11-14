@@ -4,8 +4,9 @@ export interface ButtonProps {
   secondary?: boolean;
   label: string | ReactElement;
   padding?: string;
-  onClick?: () => void;
+  onClick?: () => void
   id?: string;
+  form?: string | undefined;
 }
 
 export interface CardJobProps {

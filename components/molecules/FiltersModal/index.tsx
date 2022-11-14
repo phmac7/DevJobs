@@ -9,25 +9,36 @@ import trapFocus from '@/utils/trapFocus';
 interface FiltersModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  location: string;
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+  fullTime: boolean;
+  setFullTime: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const FiltersModal: React.FC<FiltersModalProps> = ({ isOpen, setIsOpen }) => {
+const FiltersModal: React.FC<FiltersModalProps> = ({
+  isOpen,
+  setIsOpen,
+  location,
+  setLocation,
+  fullTime,
+  setFullTime,
+}) => {
   const closeModal = () => {
     setIsOpen(false);
   };
   const modalID = useId();
-  const closeModalbtnID = useId();
+  const searchBtnID = useId();
   const closeModalIconID = useId();
 
   useEffect(() => {
     const modal = document.getElementById(modalID);
-    const closeButton = document.getElementById(closeModalbtnID);
+    const closeButton = document.getElementById(searchBtnID);
     const closeIcon = document.getElementById(closeModalIconID);
     if (modal && closeButton && closeIcon) {
       trapFocus(modal, closeIcon, closeButton);
     }
     closeButton?.focus();
-  }, [isOpen, modalID, closeModalbtnID, closeModalIconID]);
+  }, [isOpen, modalID, searchBtnID, closeModalIconID]);
 
   useEffect(() => {
     const closeOnKeyboard = (e: KeyboardEvent) => {
@@ -61,9 +72,13 @@ const FiltersModal: React.FC<FiltersModalProps> = ({ isOpen, setIsOpen }) => {
             onClick={closeModal}
           />
         </div>
-        <LocationFilter />
-        <Checkbox label="Full Time Only" />
-        <Button label={'Search'} id={closeModalbtnID} />
+        <LocationFilter location={location} setLocation={setLocation} />
+        <Checkbox
+          label="Full Time Only"
+          fullTime={fullTime}
+          setFullTime={setFullTime}
+        />
+        <Button form={'searchForm'} label={'Apply filters!'} id={searchBtnID} />
       </div>
     </div>
   );

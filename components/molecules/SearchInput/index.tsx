@@ -1,13 +1,12 @@
 'use client';
-import { Button, Checkbox } from '@/components/atoms';
-import LocationFilter from '@/components/atoms/LocationFilter';
 import React, { useState, useEffect } from 'react';
+import { Button, Checkbox, LocationFilter } from '@/components/atoms';
+import { FiltersModal } from '@/components/molecules';
 import { BiSearch } from 'react-icons/bi';
 import { FaFilter } from 'react-icons/fa';
-import FiltersModal from '../FiltersModal';
 import useWindowSize, { Size } from '@/hooks/useWindowSize';
-import { Jobs } from '@/models/types';
 import useFilterJobs from '@/hooks/useFilterJobs';
+import { Jobs } from '@/models/types';
 
 interface SearchInputProps {
   jobs: Jobs[];
@@ -45,7 +44,11 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
   }, [windowSize]);
 
   return (
-    <form className="relative -translate-y-1/2" onSubmit={onSubmitHandler}>
+    <form
+      id="searchForm"
+      className="relative -translate-y-1/2"
+      onSubmit={onSubmitHandler}
+    >
       <div className="w-full rounded bg-white dark:bg-very-dark-blue h-20 flex items-center px-6 gap-4">
         <div className="hidden tablet:block">
           <BiSearch style={{ color: '#5964E0', fontSize: '20px' }} />
@@ -81,7 +84,14 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
           <Button label={'Search'} padding={'14px'} />
         </div>
       </div>
-      <FiltersModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      <FiltersModal
+        isOpen={isModalOpen}
+        setIsOpen={setIsModalOpen}
+        location={location}
+        setLocation={setLocation}
+        fullTime={fullTime}
+        setFullTime={setFullTime}
+      />
     </form>
   );
 };

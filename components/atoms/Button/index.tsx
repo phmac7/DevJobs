@@ -9,6 +9,7 @@ const Button: React.FC<ButtonProps> = ({
   padding,
   onClick,
   id,
+  form,
 }) => {
   const onClickHandler = () => {
     if (onClick) {
@@ -21,6 +22,7 @@ const Button: React.FC<ButtonProps> = ({
   if (!secondary) {
     return (
       <button
+        form={form}
         id={id}
         onClick={onClickHandler}
         style={{ padding: padding }}
@@ -33,6 +35,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      form={form}
       id={id}
       onClick={onClickHandler}
       style={{ padding: padding }}
