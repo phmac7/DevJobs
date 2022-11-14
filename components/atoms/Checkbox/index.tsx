@@ -8,7 +8,7 @@ interface CheckBoxProps {
 
 const Checkbox: React.FC<CheckBoxProps> = ({ label }) => {
   return (
-    <div className="flex items-center mb-4">
+    <div className="flex items-center mb-4 tablet:h-full tablet:mb-0">
       <input
         id="default-checkbox"
         type="checkbox"
