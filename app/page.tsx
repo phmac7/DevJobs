@@ -1,11 +1,10 @@
 import { JobList } from '@/components/organisms';
 import { Companies, Jobs } from '@/models/types';
-import { Suspense } from 'react';
 
 const getJobs = async () => {
   try {
     const res = await (
-      await fetch('http://localhost:1337/api/jobs?populate=*', {
+      await fetch(`${process.env.NEXT_STRAPI_URL}/jobs?populate=*`, {
         headers: {
           Authorization: 'Bearer ' + process.env.STRAPI_KEY,
           'Content-Type': 'application/json',
@@ -23,7 +22,7 @@ const getJobs = async () => {
 const getCompanies = async () => {
   try {
     const res = await (
-      await fetch('http://localhost:1337/api/companies?populate=logo', {
+      await fetch(`${process.env.NEXT_STRAPI_URL}/companies?populate=logo`, {
         headers: {
           Authorization: 'Bearer ' + process.env.STRAPI_KEY,
           'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ interface jobPageProps {
 
 const getJobInfo = async (jobId: string) => {
   const res = await (
-    await fetch(`http://localhost:1337/api/jobs/${jobId}?populate=*`, {
+    await fetch(`${process.env.NEXT_STRAPI_URL}/jobs/${jobId}?populate=*`, {
       headers: {
         Authorization: 'Bearer ' + process.env.STRAPI_KEY,
         'Content-Type': 'application/json',
@@ -25,7 +25,7 @@ const getJobInfo = async (jobId: string) => {
 const getCompanyInfo = async (companyId: number | undefined) => {
   const res = await (
     await fetch(
-      `http://localhost:1337/api/companies/${companyId}?populate=logo`,
+      `${process.env.NEXT_STRAPI_URL}/companies/${companyId}?populate=logo`,
       {
         headers: {
           Authorization: 'Bearer ' + process.env.STRAPI_KEY,
