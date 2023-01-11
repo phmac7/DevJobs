@@ -46,7 +46,7 @@ export default async function jobPage({ params: { jobId } }: jobPageProps) {
   return (
     <>
       <CompanyHeader company={company} jobInfo={jobInfo} />
-      <div className="flex flex-col gap-8 w-full max-w-2xl bg-white dark:bg-very-dark-blue rounded px-6 py-10 m-auto">
+      <div className="flex flex-col mb-24 gap-8 w-full max-w-2xl bg-white dark:bg-very-dark-blue rounded px-6 py-10 m-auto">
         <JobHeader jobInfo={jobInfo} />
         <JobDetails jobInfo={jobInfo} />
 
