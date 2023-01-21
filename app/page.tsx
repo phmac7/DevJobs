@@ -1,6 +1,7 @@
 import { JobList } from '@/components/organisms';
 import { createClient } from 'contentful';
 import { Company, Job } from '@/models/contetful';
+import Script from 'next/script';
 
 export const revalidate = 60;
 
@@ -50,5 +51,21 @@ export default async function Page() {
     return <p>Loading...</p>;
   }
 
-  return <JobList jobs={jobs} companies={companies} />;
+  return (
+    <>
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env
+          .NEXT_PUBLIC_GA_MEASUREMENT_ID!}`}
+      />
+      <Script>
+        {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', ${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID!});`}
+      </Script>
+      <JobList jobs={jobs} companies={companies} />;
+    </>
+  );
 }
