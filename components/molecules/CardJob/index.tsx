@@ -12,11 +12,10 @@ const CardJob: React.FC<CardJobProps> = ({
   location,
 }) => {
   const filterCompany = companies?.filter(
-    (company) => company.attributes.companyName === companyName
+    (company: any) => company.fields.name === companyName
   );
-  const backgroundColor = filterCompany[0].attributes.logoBackgroundColor;
-  const logoUrl = filterCompany[0].attributes.logo.data.attributes.url;
-
+  const backgroundColor = filterCompany[0].fields.logoBackground;
+  const logoUrl = filterCompany[0].fields.logo.fields.file.url;
   return (
     <div className="w-85 max-w-sm h-60 bg-white dark:bg-very-dark-blue rounded">
       <div className="px-8 pt-2 pb-8">
@@ -26,7 +25,7 @@ const CardJob: React.FC<CardJobProps> = ({
         >
           <Image
             className="text-center m-auto"
-            src={`http://localhost:1337${logoUrl}`}
+            src={`https:${logoUrl}`}
             alt={'logo'}
             width={40}
             height={40}

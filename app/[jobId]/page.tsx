@@ -1,6 +1,7 @@
 import { Button } from '@/components/atoms';
 import { CompanyHeader, JobDetails, JobHeader } from '@/components/molecules';
 import { Companies, Jobs } from '@/models/types';
+import { createClient } from 'contentful';
 
 interface jobPageProps {
   params: {
@@ -8,44 +9,25 @@ interface jobPageProps {
   };
 }
 
-const getJobInfo = async (jobId: string) => {
-  const res = await (
-    await fetch(`${process.env.NEXT_STRAPI_URL}/jobs/${jobId}?populate=*`, {
-      headers: {
-        Authorization: 'Bearer ' + process.env.STRAPI_KEY,
-        'Content-Type': 'application/json',
-      },
-      cache: 'no-cache',
-    })
-  ).json();
-  const data: Jobs = res.data;
-  return { jobInfo: data, companyId: data.attributes.company.data?.id };
-};
+const client = createClient({
+  space: process.env.NEXT_CONTENTFUL_SPACE!,
+  accessToken: process.env.NEXT_CONTENTFUL_DELIVERY!,
+});
 
-const getCompanyInfo = async (companyId: number | undefined) => {
-  const res = await (
-    await fetch(
-      `${process.env.NEXT_STRAPI_URL}/companies/${companyId}?populate=logo`,
-      {
-        headers: {
-          Authorization: 'Bearer ' + process.env.STRAPI_KEY,
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-cache',
-      }
-    )
-  ).json();
-  const data: Companies = res.data;
-  return data;
+const getJobInfo = async (jobId: string) => {
+  const response = await client.getEntries({
+    content_type: 'jobDescription',
+    'fields.slug': jobId,
+  });
+  return response.items[0];
 };
 
 export default async function jobPage({ params: { jobId } }: jobPageProps) {
-  const { jobInfo, companyId } = await getJobInfo(jobId);
-  const company = await getCompanyInfo(companyId);
+  const jobInfo = await getJobInfo(jobId);
 
   return (
     <>
-      <CompanyHeader company={company} jobInfo={jobInfo} />
+      <CompanyHeader jobInfo={jobInfo} />
       <div className="flex flex-col mb-24 gap-8 w-full max-w-2xl bg-white dark:bg-very-dark-blue rounded px-6 py-10 m-auto">
         <JobHeader jobInfo={jobInfo} />
         <JobDetails jobInfo={jobInfo} />

@@ -6,24 +6,24 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface jobListProps {
-  jobs: Jobs[];
-  companies: Companies[];
+  jobs: any;
+  companies: any;
 }
 
 const JobList: React.FC<jobListProps> = ({ jobs, companies }) => {
-  const [filteredJobs, setFilteredJobs] = useState<Jobs[]>(jobs);
+  const [filteredJobs, setFilteredJobs] = useState<any>(jobs);
 
   return (
     <div>
       <SearchInput jobs={jobs} setFilteredJobs={setFilteredJobs} />
       <div className="grid grid-cols-1 gap-x-3 gap-y-12 justify-items-center tablet:grid-cols-2 tablet-xl:grid-cols-3">
-        {filteredJobs?.map((job) => (
-          <Link key={job.id} href={`/${job.id}`}>
+        {filteredJobs?.map((job: any) => (
+          <Link key={job.sys.id} href={`/${job.fields.slug}`}>
             <CardJob
-              companyName={job.attributes.company.data?.attributes.companyName}
-              contract={job.attributes.contract}
-              location={job.attributes.location}
-              position={job.attributes.position}
+              companyName={job.fields.company.fields.name}
+              contract={job.fields.contractType.fields.name}
+              location={job.fields.location.fields.name}
+              position={job.fields.title}
               companies={companies}
             />
           </Link>

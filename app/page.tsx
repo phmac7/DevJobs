@@ -1,19 +1,18 @@
 import { JobList } from '@/components/organisms';
+import { createClient } from 'contentful';
 import { Companies, Jobs } from '@/models/types';
+
+const client = createClient({
+  space: process.env.NEXT_CONTENTFUL_SPACE!,
+  accessToken: process.env.NEXT_CONTENTFUL_DELIVERY!,
+});
 
 const getJobs = async () => {
   try {
-    const res = await (
-      await fetch(`${process.env.NEXT_STRAPI_URL}/jobs?populate=*`, {
-        headers: {
-          Authorization: 'Bearer ' + process.env.STRAPI_KEY,
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-cache',
-      })
-    ).json();
-    const data: Jobs[] = await res.data;
-    return data;
+    const response = await client.getEntries({
+      content_type: 'jobDescription',
+    });
+    return response.items;
   } catch (err) {
     console.log(err);
   }
@@ -21,17 +20,8 @@ const getJobs = async () => {
 
 const getCompanies = async () => {
   try {
-    const res = await (
-      await fetch(`${process.env.NEXT_STRAPI_URL}/companies?populate=logo`, {
-        headers: {
-          Authorization: 'Bearer ' + process.env.STRAPI_KEY,
-          'Content-Type': 'application/json',
-        },
-        cache: 'no-cache',
-      })
-    ).json();
-    const data: Companies[] = await res.data;
-    return data;
+    const response = await client.getEntries({ content_type: 'company' });
+    return response.items;
   } catch (err) {
     console.log(err);
   }

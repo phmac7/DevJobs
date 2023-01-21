@@ -9,8 +9,8 @@ import useFilterJobs from '@/hooks/useFilterJobs';
 import { Jobs } from '@/models/types';
 
 interface SearchInputProps {
-  jobs: Jobs[];
-  setFilteredJobs: React.Dispatch<React.SetStateAction<Jobs[]>>;
+  jobs: any;
+  setFilteredJobs: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
