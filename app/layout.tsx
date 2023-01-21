@@ -1,5 +1,4 @@
 'use client';
-import Footer from '@/components/organisms/Footer';
 import Header from '@/components/organisms/Header';
 import '@/styles/globals.css';
 import { Kumbh_Sans } from '@next/font/google';
@@ -23,7 +22,6 @@ export default function RootLayout({
         >
           <Header />
           <main className="mx-6">{children}</main>
-          {/* <Footer /> */}
         </body>
       </ThemeProvider>
     </html>
