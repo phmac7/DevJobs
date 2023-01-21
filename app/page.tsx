@@ -2,6 +2,8 @@ import { JobList } from '@/components/organisms';
 import { createClient } from 'contentful';
 import { Company, Job } from '@/models/contetful';
 
+export const revalidate = 60;
+
 const client = createClient({
   space: process.env.NEXT_CONTENTFUL_SPACE!,
   accessToken: process.env.NEXT_CONTENTFUL_DELIVERY!,
