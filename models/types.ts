@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { Company } from './contetful';
 
 export interface ButtonProps {
   secondary?: boolean;
@@ -14,7 +15,7 @@ export interface CardJobProps {
     position: string | undefined;
     companyName: string | undefined;
     location: string | undefined;
-    companies: any,
+    companies: Company[],
     createdAt: string
   }
 

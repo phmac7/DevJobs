@@ -3,9 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
+import { Job } from '@/models/contetful';
 
 interface CompanyHeaderProps {
-  jobInfo: any;
+  jobInfo: Job;
 }
 
 const CompanyHeader: React.FC<CompanyHeaderProps> = ({ jobInfo }) => {

@@ -11,7 +11,7 @@ interface jobListProps {
 }
 
 const JobList: React.FC<jobListProps> = ({ jobs, companies }) => {
-  const [filteredJobs, setFilteredJobs] = useState<any>(jobs);
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>(jobs);
 
   return (
     <div>

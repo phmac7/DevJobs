@@ -10,7 +10,7 @@ import { Job } from '@/models/contetful';
 
 interface SearchInputProps {
   jobs: Job[];
-  setFilteredJobs: React.Dispatch<React.SetStateAction<any>>;
+  setFilteredJobs: React.Dispatch<React.SetStateAction<Job[]>>;
 }
 
 const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {

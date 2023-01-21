@@ -1,6 +1,7 @@
 'use client';
 
 import { CardJobProps } from '@/models/types';
+import { Company } from '@/models/contetful';
 import { getDateInDaysAgo } from '@/utils/getDateInDaysAgo';
 import Image from 'next/image';
 import React from 'react';
@@ -14,7 +15,7 @@ const CardJob: React.FC<CardJobProps> = ({
   createdAt,
 }) => {
   const filterCompany = companies?.filter(
-    (company: any) => company.fields.name === companyName
+    (company: Company) => company.fields.name === companyName
   );
   const backgroundColor = filterCompany[0].fields.logoBackground;
   const logoUrl = filterCompany[0].fields.logo.fields.file.url;
