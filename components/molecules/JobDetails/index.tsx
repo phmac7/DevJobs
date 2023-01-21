@@ -1,8 +1,8 @@
-import { Jobs } from '@/models/types';
+import { Job } from '@/models/contetful';
 import React from 'react';
 
 interface jobDetailsProps {
-  jobInfo: any;
+  jobInfo: Job;
 }
 
 const JobDetails: React.FC<jobDetailsProps> = ({ jobInfo }) => {

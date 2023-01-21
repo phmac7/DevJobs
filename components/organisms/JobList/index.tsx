@@ -17,14 +17,15 @@ const JobList: React.FC<jobListProps> = ({ jobs, companies }) => {
     <div>
       <SearchInput jobs={jobs} setFilteredJobs={setFilteredJobs} />
       <div className="grid grid-cols-1 gap-x-3 gap-y-12 justify-items-center tablet:grid-cols-2 tablet-xl:grid-cols-3">
-        {filteredJobs?.map((job: any) => (
+        {filteredJobs?.map((job: Job) => (
           <Link key={job.sys.id} href={`/${job.fields.slug}`}>
             <CardJob
               companyName={job.fields.company.fields.name}
               contract={job.fields.contractType.fields.name}
-              location={job.fields.location.fields.name}
+              location={job.fields.location.fields.country}
               position={job.fields.title}
               companies={companies}
+              createdAt={job.sys.createdAt}
             />
           </Link>
         ))}

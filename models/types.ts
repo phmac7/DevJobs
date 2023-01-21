@@ -14,6 +14,7 @@ export interface CardJobProps {
     position: string | undefined;
     companyName: string | undefined;
     location: string | undefined;
-    companies: any
+    companies: any,
+    createdAt: string
   }
 
