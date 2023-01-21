@@ -1,4 +1,5 @@
 import { ThemeToggle } from '@/components/atoms';
+import Logo from '@/components/atoms/Logo';
 import Image from 'next/image';
 import React from 'react';
 import './Header.module.css';
@@ -8,12 +9,7 @@ const Header = () => {
     <nav className={`header w-full h-36`}>
       <div className="flex pt-8 px-6 gap-8 flex-col">
         <div className="flex justify-between items-center">
-          <Image
-            src={'/assets/desktop/logo.svg'}
-            alt={'DevJobs logo: just the word in white color'}
-            width={115}
-            height={32}
-          />
+          <Logo />
           <ThemeToggle />
         </div>
       </div>
