@@ -1,6 +1,6 @@
 import { Button } from '@/components/atoms';
 import { CompanyHeader, JobDetails, JobHeader } from '@/components/molecules';
-import { Companies, Jobs } from '@/models/types';
+import { Job } from '@/models/contetful';
 import { createClient } from 'contentful';
 
 interface jobPageProps {
@@ -23,7 +23,13 @@ const getJobInfo = async (jobId: string) => {
 };
 
 export default async function jobPage({ params: { jobId } }: jobPageProps) {
-  const jobInfo = await getJobInfo(jobId);
+  const jobInfoResponse: unknown = await getJobInfo(jobId);
+
+  const getJobType = (job: Job) => {
+    return job;
+  };
+
+  const jobInfo = getJobType(jobInfoResponse as Job);
 
   return (
     <>

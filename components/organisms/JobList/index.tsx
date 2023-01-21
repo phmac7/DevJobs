@@ -1,13 +1,13 @@
 'use client';
 import { SearchInput } from '@/components/molecules';
 import { CardJob } from '@/components/molecules';
-import { Companies, Jobs } from '@/models/types';
+import { Job, Company } from '@/models/contetful';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface jobListProps {
-  jobs: any;
-  companies: any;
+  jobs: Job[];
+  companies: Company[];
 }
 
 const JobList: React.FC<jobListProps> = ({ jobs, companies }) => {

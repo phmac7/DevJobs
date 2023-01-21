@@ -6,10 +6,10 @@ import { BiSearch } from 'react-icons/bi';
 import { FaFilter } from 'react-icons/fa';
 import useWindowSize, { Size } from '@/hooks/useWindowSize';
 import useFilterJobs from '@/hooks/useFilterJobs';
-import { Jobs } from '@/models/types';
+import { Job } from '@/models/contetful';
 
 interface SearchInputProps {
-  jobs: any;
+  jobs: Job[];
   setFilteredJobs: React.Dispatch<React.SetStateAction<any>>;
 }
 
@@ -19,7 +19,6 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
   const [fullTime, setFullTime] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const windowSize: Size = useWindowSize();
-  console.log(jobs);
 
   const positionChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPosition(e.target.value);

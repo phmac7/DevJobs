@@ -1,7 +1,7 @@
-import { Jobs } from '@/models/types';
+import { Job } from '@/models/contetful';
 
 interface filters {
-  jobs: any;
+  jobs: Job[];
   position: string;
   location: string;
   isFullTime: boolean;

@@ -1,6 +1,6 @@
 import { JobList } from '@/components/organisms';
 import { createClient } from 'contentful';
-import { Companies, Jobs } from '@/models/types';
+import { Company, Job } from '@/models/contetful';
 
 const client = createClient({
   space: process.env.NEXT_CONTENTFUL_SPACE!,
@@ -12,7 +12,8 @@ const getJobs = async () => {
     const response = await client.getEntries({
       content_type: 'jobDescription',
     });
-    return response.items;
+    const data = response.items;
+    return data;
   } catch (err) {
     console.log(err);
   }
@@ -21,15 +22,27 @@ const getJobs = async () => {
 const getCompanies = async () => {
   try {
     const response = await client.getEntries({ content_type: 'company' });
-    return response.items;
+    const data = response.items;
+    return data;
   } catch (err) {
     console.log(err);
   }
 };
 
 export default async function Page() {
-  const jobs = await getJobs();
-  const companies = await getCompanies();
+  const jobsResponse: unknown = await getJobs();
+  const companiesResponse: unknown = await getCompanies();
+
+  const getJobType = (jobs: Job[]) => {
+    return jobs;
+  };
+
+  const getCompanyType = (company: Company[]) => {
+    return company;
+  };
+
+  const jobs = getJobType(jobsResponse as Job[]);
+  const companies = getCompanyType(companiesResponse as Company[]);
 
   if (!jobs || !companies) {
     return <p>Loading...</p>;

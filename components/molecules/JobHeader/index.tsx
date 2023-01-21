@@ -1,13 +1,12 @@
 import { Button } from '@/components/atoms';
-import { Jobs } from '@/models/types';
+import { Job } from '@/models/contetful';
 import React from 'react';
 
 interface JobHeaderProps {
-  jobInfo: any;
+  jobInfo: Job;
 }
 
 const JobHeader: React.FC<JobHeaderProps> = ({ jobInfo }) => {
-  console.log(jobInfo.fields.company);
   return (
     <div className="flex flex-col w-full">
       <div className="flex flex-col gap-2 mb-12">
@@ -18,7 +17,7 @@ const JobHeader: React.FC<JobHeaderProps> = ({ jobInfo }) => {
         </div>
         <h2>{jobInfo.fields.title}</h2>
         <span className="font-medium text-primary">
-          {jobInfo.fields.location.fields.name}
+          {jobInfo.fields.location.fields.country}
         </span>
       </div>
       <Button label={'Apply Now!'} />
