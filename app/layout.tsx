@@ -23,7 +23,7 @@ export default function RootLayout({
         >
           <Header />
           <main className="mx-6">{children}</main>
-          <Footer />
+          {/* <Footer /> */}
         </body>
       </ThemeProvider>
     </html>

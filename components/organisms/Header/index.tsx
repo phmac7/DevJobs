@@ -1,11 +1,11 @@
 import { ThemeToggle } from '@/components/atoms';
 import Image from 'next/image';
 import React from 'react';
-import styles from './Header.module.css';
+import './Header.module.css';
 
 const Header = () => {
   return (
-    <nav className={`${styles.header} w-full h-36`}>
+    <nav className={`header w-full h-36`}>
       <div className="flex pt-8 px-6 gap-8 flex-col">
         <div className="flex justify-between items-center">
           <Image

@@ -19,6 +19,7 @@ const SearchInput: React.FC<SearchInputProps> = ({ jobs, setFilteredJobs }) => {
   const [fullTime, setFullTime] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const windowSize: Size = useWindowSize();
+  console.log(jobs);
 
   const positionChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPosition(e.target.value);
