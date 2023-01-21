@@ -34,7 +34,11 @@ export default function ThemeToggle() {
         <span>
           <BiSun size={20} />
         </span>
-        <span className=" w-12 h-6 bg-light-gray rounded-xl flex items-center relative transition-all">
+        <span
+          className={` w-12 h-6 ${
+            isDark() ? 'bg-light-gray' : 'bg-dark-blue'
+          } rounded-xl flex items-center relative transition-all`}
+        >
           <span
             className={`block w-4 h-4 bg-primary rounded-full group-hover:bg-primary-light my-1 ${
               isDark() ? 'translate-x-7' : 'translate-x-1'
