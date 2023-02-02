@@ -52,7 +52,7 @@ export default async function Page() {
 
   return (
     <>
-      <JobList jobs={jobs} companies={companies} />;
+      <JobList jobs={jobs} companies={companies} />
     </>
   );
 }
